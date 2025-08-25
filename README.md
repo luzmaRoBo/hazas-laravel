@@ -1,47 +1,109 @@
-# 🌾 Hazas de la Suerte — Laravel 11
+🌾 Hazas de la Suerte — Laravel 11
+Este proyecto es una aplicación web desarrollada en Laravel + PHP + MySQL + TailwindCSS como tarea de 2º del ciclo superior de Desarrollo de Aplicaciones Web (DAW).
 
-Aplicación web desarrollada en **Laravel + PHP + MySQL + TailwindCSS** como tarea de 2º DAW.  
-Permite gestionar las **Hazas de la Suerte** (parcelas), padrón de habitantes/colonos, junta de hazas y usuarios, con control de acceso por **roles**.
+La aplicación permite gestionar las Hazas de la Suerte (parcelas comunales), los habitantes y colonos asociados, la junta de hazas y los usuarios del sistema.  
+Incluye un sistema de roles para controlar el acceso y las acciones permitidas.
 
-## 🚀 Tecnologías
+🚀 Tecnologías utilizadas
+  Backend: PHP 8.3 + Laravel 11
 
--   PHP 8.3 · Laravel 11
--   MySQL/MariaDB
--   Blade + TailwindCSS
--   Vite
+Frontend: Blade + TailwindCSS
 
-## 🔐 Roles y permisos
+Base de datos: MySQL/MariaDB
 
--   **root**: control total (crear/leer/actualizar/eliminar en todas las tablas, gestión de usuarios/roles).
--   **modificacion**: lectura + modificación (crear/editar) pero sin privilegios de administración total.
--   **lectura**: solo lectura.
+Gestión de dependencias: Composer + NPM
 
-> Al **registrarse**, el usuario entra con rol **lectura**.  
-> Para administrar, asciende un usuario a **root** desde la base de datos (ver abajo).
+Entorno de desarrollo usado: Laragon (funciona igual en XAMPP, WampServer o Docker)
 
-## 🧩 Módulos actuales
+🔐 Roles y permisos
+El sistema cuenta con tres roles principales:
 
--   **Hazas**
--   **Padrón de habitantes**
--   **Padrón de colonos**
--   **Junta de hazas**
--   **Usuarios**
+root → control total (crear, leer, actualizar, eliminar en todas las tablas, gestión de usuarios y roles).
 
-> El código está preparado para añadir más tablas reutilizando el patrón de **controlador + vistas** ya existente.
+modificacion → lectura + modificación (crear y editar), pero sin privilegios de administración total.
 
----
+lectura → solo lectura de los datos.
 
-## ⚙️ Instalación (local)
+👉 Al registrarse, el usuario entra con el rol lectura.  
+Para convertirlo en root, hay que modificar el campo rol en la base de datos manualmente.
 
-### 1) Clonar e instalar
+🧩 Módulos implementados
+  Gestión de Hazas
 
-```bash
-git clone https://github.com/TU_USUARIO/hazas-laravel.git
-cd hazas-laravel
+Padrón de habitantes
+
+Padrón de colonos
+
+Junta de hazas
+
+Usuarios
+
+El proyecto está preparado para añadir fácilmente más tablas siguiendo la misma estructura de controlador + modelo + vistas.
+
+⚙️ Instalación y puesta en marcha
+
+1. Clonar el repositorio
+   Primero descarga el proyecto desde GitHub:
+
+Bash
+
+git clone https://github.com/luzmaRoBo/hazas-laravel.git
+cd hazas-laravel 2. Instalar dependencias
+El proyecto utiliza Composer para las dependencias de PHP y NPM para compilar los estilos de TailwindCSS. (Funciona igual si usas Laragon, XAMPP, WampServer o Docker).
+
+Bash
+
 composer install
-npm install
-```
+npm install 3. Configurar el archivo de entorno
+Laravel necesita un archivo .env con la configuración de la aplicación. Copia el archivo de ejemplo y genera la clave de la app:
 
-## 🛠️ Construido con
+Bash
 
-Este proyecto fue desarrollado usando [Laravel](https://laravel.com), un framework de PHP moderno y potente.
+cp .env.example .env
+php artisan key:generate 4. Crear la base de datos
+Crea una base de datos vacía en MySQL/MariaDB (puedes llamarla hazasluzma o el nombre que prefieras). Ejemplo:
+
+SQL
+
+CREATE DATABASE hazasluzma;
+Ahora edita tu archivo .env para poner las credenciales correctas (recomendado DB_HOST=127.0.0.1):
+
+Bash
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=hazasluzma
+DB_USERNAME=root
+DB_PASSWORD= 5. Ejecutar migraciones
+Esto creará todas las tablas necesarias en tu base de datos:
+
+Bash
+
+php artisan migrate
+Opcional (solo si tu app usa archivos públicos de storage):
+
+Bash
+
+php artisan storage:link 6. Iniciar el servidor de desarrollo
+Levanta el servidor de Laravel:
+
+Bash
+
+php artisan serve
+La aplicación quedará disponible en:
+
+http://127.0.0.1:8000
+Si usas Laragon con Virtual Hosts, accede por la URL que te cree (p. ej. http://hazas.test).
+
+7. Compilar los estilos (Tailwind con Vite)
+   Para que los estilos se apliquen correctamente:
+
+Bash
+
+npm run dev
+Para un build de producción:
+
+Bash
+
+npm run build
