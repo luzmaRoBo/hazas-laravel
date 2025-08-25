@@ -57,6 +57,8 @@ El proyecto está preparado para añadir fácilmente más tablas siguiendo la mi
 
 ## ⚙️ Instalación y puesta en marcha
 
+Una vez cumplidos los requisitos previos, sigue estos pasos:
+
 ### 1. Clonar el repositorio
 
 Primero descarga el proyecto desde GitHub:
