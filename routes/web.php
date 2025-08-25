@@ -26,7 +26,7 @@ Route::post('/registro', [RegistroControlador::class, 'store'])->name('registro.
 
 // RUTAS PROTEGIDAS: requieren inicio de sesión
 Route::middleware([AuthCheck::class])->group(function () {
-    Route::post('/logout', [LoginControlador::class, 'logout'])->name('logout'); //para cerrar sesión
+    Route::post('/logout', [LoginControlador::class, 'logout'])->name('logout');  //para cerrar sesión
 
 
     //ruta para la página de inicio
@@ -34,7 +34,7 @@ Route::middleware([AuthCheck::class])->group(function () {
 
     //rutas para la tabla HAZAS
     Route::controller(HazasControlador::class)->group(function () {
-        Route::get('hazas/show', 'show')->name('hazas.show'); //listado de hazas
+        Route::get('hazas/show', 'show')->name('hazas.show');  //listado de hazas
         Route::get('hazas/create', 'create')->name('hazas.create'); //formulario de nuevas hazas
         Route::post('hazas/store', 'store')->name('hazas.store'); //guardar una nueva haza
         Route::delete('hazas/{idHaza}', 'destroy')->name('hazas.destroy'); //borrar haza existentee
@@ -61,6 +61,7 @@ Route::middleware([AuthCheck::class])->group(function () {
         Route::get('juntaHazas/{idJuntaHazas}/edit',   'edit')->name('juntaHazas.edit');   // editar
         Route::put('juntaHazas/{idJuntaHazas}',        'update')->name('juntaHazas.update'); // actualizar
     });
+
 
     //rutas para la tabla HEREDEROS de la base de datos
     // Route::controller(HerederosControlador::class)->group(function () {

@@ -45,6 +45,7 @@ body {
     display: flex;
     flex-direction: column;
 }
+
 /*estido fondo de la pagina de inicio*/
 .body1 {
     background-image: url("../../public/img/barbate2.jpg");

@@ -60,6 +60,7 @@
         </fieldset>
     </form>
 
+
     {{-- Formulario de eliminar (solo si hay $junta y el usuario es root) --}}
     @isset($junta)
         @if ($usuario && $usuario->rol === 'root')

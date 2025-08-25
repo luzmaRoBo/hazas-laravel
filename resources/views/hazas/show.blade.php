@@ -59,6 +59,7 @@
         {{ $hazas->links() }}
     </div>
 
+
     {{-- para que no se muestre en el rol lectura --}}
     @if ($usuario && in_array($usuario->rol, ['root', 'modificación']))
         <div class="btnIndex">
