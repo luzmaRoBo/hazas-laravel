@@ -17,6 +17,19 @@ Incluye un sistema de **roles** para controlar el acceso y las acciones permitid
 
 ---
 
+## ✅ Requisitos Previos
+
+Antes de empezar, asegúrate de tener instalado lo siguiente en tu sistema:
+
+-   PHP >= 8.3
+-   Composer (puedes ver cómo instalarlo aquí)
+-   Node.js >= 18.x (que incluye NPM, puedes descargarlo aquí)
+-   Un servidor de base de datos MySQL o MariaDB
+
+💡 Nota: Entornos de desarrollo como Laragon ya incluyen todo lo necesario. Si usas XAMPP o WampServer, probablemente deberás instalar Composer y Node.js manualmente.
+
+---
+
 ## 🔐 Roles y permisos
 
 El sistema cuenta con tres roles principales:
