@@ -1,0 +1,43 @@
+.plastic
+# Laravel & PHP
+/vendor/
+/node_modules/
+.env
+.env.*.local
+*.key
+
+# Laravel storage & cache
+/public/storage
+/storage/*.key
+/storage/app/public
+/storage/framework/*
+/storage/logs/*
+
+# Laravel cache/test
+.phpunit.result.cache
+.phpunit.cache
+/coverage/
+
+# Build / compilados
+/public/build
+/public/hot
+/public/css/output.css
+
+# Archivos de BD (no versionar nunca)
+/*.sql
+/*.sqlite
+/*.dump
+
+# IDE / sistema
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+.fleet
+.nova
+.zed
+
+# Logs de dependencias
+npm-debug.log
+yarn-error.log
+pnpm-debug.log

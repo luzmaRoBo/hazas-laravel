@@ -1,0 +1,327 @@
+/*
+oscuro: #181f1c
+verdeOscuro: #274029
+verde: #2d6a4f
+menta: #52b788
+Claro: #c2c5aa
+para mensajes:#CC5500
+
+oscuro: rgba(8, 28, 21, 1)
+verdeOscuro: rgba(27, 67, 50, 1)
+verde: rgba(45, 106, 79, 1)
+menta: rgba(82, 183, 136, 1)
+Claro: rgba(194, 197, 170, 1)
+*/
+/*breakpoints que se usan en tailwind*/
+/*
+sm 640px
+md 768px
+lg 1024px
+xl 1280px
+2xl 1536px
+*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    box-sizing: border-box;
+}
+/*para poder poner el borde de las letras de color*/
+@layer utilities {
+    .custom-stroke {
+        -webkit-text-stroke: 2px #181f1c;
+    }
+}
+
+html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    /* width: 100%; */
+    display: flex;
+    flex-direction: column;
+}
+/*estido fondo de la pagina de inicio*/
+.body1 {
+    background-image: url("../../public/img/barbate2.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    max-height: 100vh;
+}
+.body2 {
+    min-height: 100vh;
+}
+/*cabecera de la pagina de inicio y login*/
+header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/*cabezera resto de páginas*/
+.header2 {
+    background-image: url("../../public/img/barbate4.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/*menú de navegacion con CSS propio*/
+nav {
+    background-color: #2d6a4f;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 10px;
+}
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 5px;
+}
+.menu1 {
+    justify-content: start;
+}
+.menu2 {
+    justify-content: start;
+}
+nav ul li {
+    padding: 5px;
+    position: relative;
+}
+nav ul li a {
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.3em;
+    font-weight: bolder;
+    color: white;
+}
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: -10px;
+    padding: 10px;
+    min-width: 256px;
+    background-color: #2d6a4f;
+}
+.submenu1 {
+    background-color: none;
+}
+
+nav ul li.open .submenu {
+    display: flex;
+    flex-direction: column;
+}
+
+.submenu li:hover {
+    background-color: #52b788;
+}
+.submenu li a:hover {
+    color: #181f1c;
+}
+/*menú de navegacion con CSS propio*/
+
+/*disposicion del main*/
+main {
+    @apply flex flex-col justify-around items-center grow w-full px-2;
+}
+
+/*ESTILOS PARA LOS FORMULARIOS*/
+.main2 form {
+    @apply w-[80%] mx-auto my-5 font-roboto;
+}
+.main2 form fieldset {
+    @apply w-full flex flex-col border-0 gap-1;
+}
+.main2 form label {
+    @apply text-lg font-bold xl:text-xl;
+    color: #333;
+}
+.main2 form input,
+main form select,
+main form textarea {
+    @apply border-2 border-verde rounded-[5px] p-1 text-lg xl:text-xl;
+}
+.main2 form textarea {
+    @apply w-full max-w-full resize-y;
+}
+.main2 form input:focus,
+main form select:focus,
+main form textarea:focus {
+    background-color: rgba(82, 183, 136, 0.4);
+}
+.btn-form {
+    @apply w-[40%] mx-auto my-[20px] bg-verde rounded-[5px] text-xl text-center font-bold text-white p-[5px] border-2 border-verdeOscuro;
+}
+.btn-volver {
+    @apply w-[40%] mx-auto my-[20px] bg-menta rounded-[5px] text-xl text-center font-bold text-white p-[5px] border-2 border-verdeOscuro;
+}
+.btn-eliminar {
+    @apply w-[40%] mx-auto my-[20px] bg-red-600 rounded-[5px] text-xl font-bold text-white p-[5px] border-2 border-verdeOscuro;
+}
+
+/*botones de las paginas create*/
+.btn-fi {
+    @apply flex flex-row justify-around !important;
+}
+@layer components {
+    .check {
+        @apply w-6 h-6 text-verde accent-verde border-2 border-verde rounded focus:ring-2 focus:ring-menta;
+    }
+}
+/*ESTILOS PARA LOS FORMULARIOS*/
+
+/*ESTILOS PARA LAS TABLAS*/
+.divTablas {
+    @apply w-full flex flex-col justify-center overflow-x-scroll;
+}
+table {
+    /* @apply w-[100%] text-center m-[5px] text-sm; */
+    width: 100%;
+    text-align: center;
+    font-size: 0.9em;
+    border: 6px double #274029;
+    margin-top: 10px;
+}
+th {
+    @apply border-2 border-verdeOscuro p-2;
+    background-color: rgba(45, 106, 79, 1);
+    color: white;
+}
+td {
+    padding: 5px;
+}
+/*filas impares*/
+table tr:nth-child(odd) {
+    background-color: rgba(45, 106, 79, 0.4);
+}
+/* Filas pares */
+table tr:nth-child(even) {
+    background-color: #e9e9e9;
+}
+/*botones de las paginas show*/
+.btnIndex {
+    @apply w-full flex justify-around;
+}
+.botonesIndex {
+    @apply no-underline p-[15px] mt-[10px] bg-verde rounded-[5px] text-white text-lg font-bold lg:text-xl xl:text-2xl !important;
+}
+/*ESTILOS PARA LAS TABLAS*/
+
+/*ESTILOS DE LAS PAGINAS LOGIN Y REGISTROS*/
+.sesiones {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(194, 197, 170, 0.8);
+    border-radius: 5px;
+}
+.sesiones form {
+    @apply w-[80%] mx-auto my-5 font-roboto;
+}
+.errores {
+    @apply w-[60%] mx-auto text-base font-bold text-center lg:w-[50%] lg:text-lg xl:w-[40%] xl:text-xl;
+    color: #cc5500;
+    border: 2px dashed #274029;
+    border-radius: 5px;
+}
+.sesiones form fieldset {
+    @apply w-full flex flex-col border-0 gap-3;
+}
+.sesiones form label {
+    @apply text-lg font-bold;
+    color: #333;
+}
+.sesiones form input,
+main form select,
+main form textarea {
+    @apply border-2 border-verde rounded-[5px] p-1 text-lg;
+}
+.sesiones form textarea {
+    @apply w-full max-w-full resize-y;
+}
+.sesiones form input:focus,
+main form select:focus,
+main form textarea:focus {
+    background-color: rgba(82, 183, 136, 0.4);
+}
+.sesiones form button {
+    @apply w-[40%] mx-auto my-[20px] bg-menta rounded-[5px] text-xl font-bold text-white p-[5px] border-2 border-verdeOscuro;
+}
+.excluido {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+/*ESTILOS DE LAS PAGINAS LOGIN Y REGISTROS*/
+
+/******************************
+    ESTILO RESPONSIVE
+******************************/
+@media (min-width: 768px) {
+    nav ul li a {
+        font-size: 1.4em;
+    }
+    .submenu {
+        min-width: 280px;
+    }
+    table {
+        font-size: 1.1em;
+    }
+}
+
+@media (min-width: 1024px) {
+    nav ul li a {
+        font-size: 1.7em;
+    }
+    .submenu {
+        min-width: 320px;
+    }
+    table {
+        font-size: 1.1em;
+    }
+}
+
+@media (min-width: 1280px) {
+    .botonesIndex {
+        @apply text-3xl;
+    }
+    nav ul li a {
+        font-size: 1.9em;
+    }
+    .submenu {
+        min-width: 360px;
+    }
+    table {
+        font-size: 1.2em;
+    }
+    .pruebaForm {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-around;
+    }
+    .pruebaForm fieldset {
+        border: 1px solid black;
+        width: 45% !important;
+    }
+}
+
+@media (min-width: 1536px) {
+    nav ul li a {
+        font-size: 2em;
+    }
+    .submenu {
+        min-width: 360px;
+    }
+    table {
+        font-size: 1.3em;
+    }
+}
