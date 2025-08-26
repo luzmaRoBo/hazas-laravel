@@ -1,0 +1,76 @@
+version: '3.8'
+
+services:
+  # Servicio de la Aplicación (PHP + Node para Tailwind/Vite)
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: hazas-app
+    container_name: hazas-app
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    # Exponemos el puerto de Vite para el Hot Reloading
+    ports:
+      - "5173:5173"
+    networks:
+      - hazas-network
+
+  # Servicio del Servidor Web (Nginx)
+  nginx:
+    image: nginx:1.25-alpine
+    container_name: hazas-nginx
+    restart: unless-stopped
+    ports:
+      - "8000:80" # Accedes a la web desde http://localhost:8000
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
+    networks:
+      - hazas-network
+  # Servicio del gestor de base de datos (phpMyAdmin)
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: hazas-phpmyadmin
+    restart: always
+    ports:
+      - "8081:80"  # Accedes en el navegador con http://localhost:8081
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    depends_on:
+      - db
+    networks:
+      - hazas-network
+
+  # Servicio de la Base de Datos (MySQL)
+  db:
+    image: mysql:8.0
+    container_name: hazas-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      # ELIMINA LAS DOS LÍNEAS SIGUIENTES:
+      # MYSQL_PASSWORD: ${DB_PASSWORD}
+      # MYSQL_USER: ${DB_USERNAME}
+      MYSQL_ALLOW_EMPTY_PASSWORD: true
+    volumes:
+      - db-data:/var/lib/mysql
+    ports:
+      - "3307:3306"
+    networks:
+      - hazas-network
+
+networks:
+  hazas-network:
+    driver: bridge
+
+volumes:
+  db-data:
+    driver: local

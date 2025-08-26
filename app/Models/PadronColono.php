@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class PadronColono extends Model
 {
     // Nombre de la tabla
-    protected $table = 'padroncolonos';
+    protected $table = 'padronColonos';
 
     // Datos sobre la clave primaria
     protected $primaryKey = 'idColono';

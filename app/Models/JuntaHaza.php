@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class JuntaHaza extends Model
 {
     // Nombre de la tabla
-    protected $table = 'juntahazas';
+    protected $table = 'juntaHazas';
 
     // Clave primaria
     protected $primaryKey = 'idJuntaHazas';

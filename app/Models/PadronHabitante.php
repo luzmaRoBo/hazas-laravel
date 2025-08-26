@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PadronHabitante extends Model
 {
-    protected $table = 'padronhabitantes';
+    protected $table = 'padronHabitantes';
 
     protected $primaryKey = 'idHabitante';
 
